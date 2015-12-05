@@ -9,9 +9,9 @@ NOTE: It's not likely a good idea to run with this `enabled` in production as it
 
 # Usage with an es7 @decorator
 ```
-import wrapReactComponentMethodsWithTryCatch from `react-component-errors`
+import wrapReactLifecycleMethodsWithTryCatch from `react-component-errors`
 
-@wrapReactComponentMethodsWithTryCatch
+@wrapReactLifecycleMethodsWithTryCatch
 class MyComponent {
   componentDidMount(){
     throw new Error("Test error");
@@ -25,7 +25,7 @@ class MyComponent {
 
 # Usage without a decorator
 ```
-import wrapReactComponentMethodsWithTryCatch from `react-component-errors`
+import wrapReactLifecycleMethodsWithTryCatch from `react-component-errors`
 
 class MyComponent {
   componentDidMount(){
@@ -35,7 +35,7 @@ class MyComponent {
     return <div>Hello</div>;
   }
 }
-wrapReactComponentMethodsWithTryCatch(MyComponent);
+wrapReactLifecycleMethodsWithTryCatch(MyComponent);
 ```
 
 # Config
@@ -49,7 +49,7 @@ import {config} from `react-component-errors`
 
 # Override errorHandler using config
 ```
-import wrapReactComponentMethodsWithTryCatch, {config} from `react-component-errors`
+import wrapReactLifecycleMethodsWithTryCatch, {config} from `react-component-errors`
 
 config.errorHandler = (errorReport) => {
   // Do something custom with errorReport
@@ -61,7 +61,7 @@ config.errorHandler = (errorReport) => {
   console.error(errorReport.arguments) // any arguments passed to the lifecycle method (if there were any)
 };
 
-@wrapReactComponentMethodsWithTryCatch
+@wrapReactLifecycleMethodsWithTryCatch
 class MyComponent {
   componentDidMount(){
     throw new Error("Test error");

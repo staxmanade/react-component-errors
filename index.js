@@ -89,7 +89,7 @@
 
     config: config,
     wrapReactLifecycleMethodsWithTryCatch: wrapReactLifecycleMethodsWithTryCatch,
-    'default': wrapReactComponentMethodsWithTryCatch
+    'default': wrapReactLifecycleMethodsWithTryCatch
   };
 
 }));
