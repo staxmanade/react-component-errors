@@ -9,7 +9,7 @@ NOTE: It's not likely a good idea to run with this `enabled` in production as it
 
 # Usage with an es7 @decorator
 ```
-import wrapReactLifecycleMethodsWithTryCatch from `react-component-errors`
+import wrapReactLifecycleMethodsWithTryCatch from 'react-component-errors'
 
 @wrapReactLifecycleMethodsWithTryCatch
 class MyComponent {
@@ -25,7 +25,7 @@ class MyComponent {
 
 # Usage without a decorator
 ```
-import wrapReactLifecycleMethodsWithTryCatch from `react-component-errors`
+import wrapReactLifecycleMethodsWithTryCatch from 'react-component-errors'
 
 class MyComponent {
   componentDidMount(){
@@ -41,7 +41,7 @@ wrapReactLifecycleMethodsWithTryCatch(MyComponent);
 # Config
 
 ```
-import {config} from `react-component-errors`
+import {config} from 'react-component-errors'
 ```
 
 `config.enabled`: default is `true` you can set to false to disable wrapping components with try/catch
@@ -49,7 +49,7 @@ import {config} from `react-component-errors`
 
 # Override errorHandler using config
 ```
-import wrapReactLifecycleMethodsWithTryCatch, {config} from `react-component-errors`
+import wrapReactLifecycleMethodsWithTryCatch, {config} from 'react-component-errors'
 
 config.errorHandler = (errorReport) => {
   // Do something custom with errorReport
