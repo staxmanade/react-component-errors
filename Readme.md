@@ -7,12 +7,17 @@ Now you can more easily diagnose errors during development.
 
 NOTE: It's not likely a good idea to run with this `enabled` in production as it could affect performance of your React components.
 
+### More details
+
+You can follow [this GitHub Issue](https://github.com/facebook/react/issues/2461) for more details.
+Thanks to inspiration from [skiano/react-safe-render](https://github.com/skiano/react-safe-render/blob/feature/safe-methods/index.js).
+
 # Usage with an es7 @decorator
 ```
 import wrapReactLifecycleMethodsWithTryCatch from 'react-component-errors'
 
 @wrapReactLifecycleMethodsWithTryCatch
-class MyComponent {
+class MyComponent extends React.Component {
   componentDidMount(){
     throw new Error("Test error");
   }
@@ -27,7 +32,7 @@ class MyComponent {
 ```
 import wrapReactLifecycleMethodsWithTryCatch from 'react-component-errors'
 
-class MyComponent {
+class MyComponent extends React.Component {
   componentDidMount(){
     throw new Error("Test error");
   }
@@ -48,26 +53,34 @@ import {config} from 'react-component-errors'
 `config.errorHandler`: default will `console.error` a helpful error message. See example below to override and customize errorHandler.
 
 # Override errorHandler using config
+
+You can see the below running [in a plnkr](http://plnkr.co/edit/VlYsps?p=preview) where we give the helper our own `errorHandler` which uses [Toastr](http://codeseven.github.io/toastr/) to display error messages.
+
 ```
-import wrapReactLifecycleMethodsWithTryCatch, {config} from 'react-component-errors'
+'use strict';
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import toastr from 'toastr';
+import wrapReactLifecycleMethodsWithTryCatch, {config} from 'npm:react-component-errors';
 
 config.errorHandler = (errorReport) => {
-  // Do something custom with errorReport
-
-  console.error(errorReport.error) // the Error caught
-  console.error(errorReport.component) // the component's name (constructor function)
-  console.error(errorReport.method) // the method that we caught an error in (EX: `render`)
-  console.error(errorReport.props) // the props passed to the component
-  console.error(errorReport.arguments) // any arguments passed to the lifecycle method (if there were any)
+   console.error(`Error in ${errorReport.component}.${errorReport.method}(${(errorReport.arguments ? '...' : '')}): ${errorReport.error}`, errorReport);
+   toastr.error(`Error in ${errorReport.component}.${errorReport.method}(${(errorReport.arguments ? '...' : '')}): ${errorReport.error}`);
 };
 
 @wrapReactLifecycleMethodsWithTryCatch
-class MyComponent {
-  componentDidMount(){
+class MyComponent extends React.Component {
+
+  componentWillMount(){
     throw new Error("Test error");
   }
+
   render(){
-    return <div>Hello</div>;
+    return <div>{this.state.message}</div>;
   }
 }
+
+
+ReactDOM.render(<MyComponent />, document.getElementById('main'));
 ```
