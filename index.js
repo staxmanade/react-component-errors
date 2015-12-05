@@ -1,9 +1,14 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
 
 /**
  * Configuration that allows overriding default behavior.
  * @type {Object}
  */
-export var config = {
+var config = {
   /**
    * If enabled=false then this essentially disables the try/catch monkey-patch
    * @type {Boolean}
@@ -17,18 +22,19 @@ export var config = {
    * @param  {[Object]} errorReport The report metadata including component, method, error thrown.
    * @return {[void]}
    */
-  errorHandler: (errorReport) => {
-    console.error(`Error in ${errorReport.component}.${errorReport.method}(${(errorReport.arguments ? '...' : '')}): ${errorReport.error}`, errorReport);
+  errorHandler: function errorHandler(errorReport) {
+    console.error('Error in ' + errorReport.component + '.' + errorReport.method + '(' + (errorReport.arguments ? '...' : '') + '): ' + errorReport.error, errorReport);
   }
 };
 
+exports.config = config;
 /**
  * Implementation of the try/catch wrapper
  * @param  {[React.Component]} component The ES6 React.Component.prototype that contains the React lifecycle method.
  * @param  {[string]} method             The name of the method to wrap ex: "render"
  * @return {[React.Component]}           Returns the same React.Component.prototype method monkey-patched with the specified method wrapped with a try/catch
  */
-var wrapWithTryCatch = (component, method) => {
+var wrapWithTryCatch = function wrapWithTryCatch(component, method) {
   var unsafe = component[method];
 
   component[method] = function () {
@@ -56,14 +62,13 @@ var wrapWithTryCatch = (component, method) => {
   }
 };
 
-
 /**
  * Wraps each React.Component lifecycle method with a try/catch that enables easier development diagnostics of errors throwin within each method
  * Methods wrapped include: `render, componentWillMount, componentDidMount, componentWillReceiveProps, shouldComponentUpdate, componentWillUpdate, componentDidUpdate, componentWillUnmount`
  * @param  {[React.Component]} ComponentConstructor The React.Component you want to wrap lifecycle methods with a try/catch and error handler.
  * @return {[void]}                      [description]
  */
-export var wrapReactLifecycleMethodsWithTryCatch = (ComponentConstructor) => {
+var wrapReactLifecycleMethodsWithTryCatch = function wrapReactLifecycleMethodsWithTryCatch(ComponentConstructor) {
   [
     'render',
     'componentWillMount',
@@ -80,4 +85,5 @@ export var wrapReactLifecycleMethodsWithTryCatch = (ComponentConstructor) => {
   });
 };
 
-export default wrapReactLifecycleMethodsWithTryCatch;
+exports.wrapReactLifecycleMethodsWithTryCatch = wrapReactLifecycleMethodsWithTryCatch;
+exports['default'] = wrapReactLifecycleMethodsWithTryCatch;
