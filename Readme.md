@@ -7,6 +7,10 @@ Now you can more easily diagnose errors during development.
 
 NOTE: It's not likely a good idea to run with this `enabled` in production as it could affect performance of your React components.
 
+# Will this work when Browsers implement Classes?
+
+To be honest, I'm not sure (would love to find out soon). This does work with a [Babel](https://babeljs.io/) transpiled ES6 class.
+
 ### More details
 
 You can follow [this GitHub Issue](https://github.com/facebook/react/issues/2461) for more details.
