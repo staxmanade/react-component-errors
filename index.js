@@ -53,7 +53,10 @@ var wrapWithTryCatch = function wrapWithTryCatch(component, method) {
       if (arguments.length > 0) {
         errorReport.arguments = arguments;
       }
-      config.errorHandler(errorReport);
+      var returnValue = config.errorHandler(errorReport);
+      if (method === 'render') {
+        return returnValue || React.createElement('h1', {}, 'error');
+      }
     }
   };
 
