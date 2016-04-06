@@ -88,3 +88,7 @@ class MyComponent extends React.Component {
 
 ReactDOM.render(<MyComponent />, document.getElementById('main'));
 ```
+
+## License
+
+Code released under [the MIT license](https://opensource.org/licenses/MIT).
