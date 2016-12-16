@@ -1,7 +1,7 @@
 
 # What is it?
 
-This is a little utility that wraps you're ES6 (or even ES5) React Component's lifecycle methods
+This is a little utility that wraps your ES6 (or even ES5) React Component's lifecycle methods
 with a try/catch and is useful in development because it exposes errors thrown that are swallowed by React by default.
 Now you can more easily diagnose errors during development.
 
