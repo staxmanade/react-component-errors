@@ -17,7 +17,7 @@ You can follow [this GitHub Issue](https://github.com/facebook/react/issues/2461
 Thanks to inspiration from [skiano/react-safe-render](https://github.com/skiano/react-safe-render/blob/feature/safe-methods/index.js).
 
 # Usage with an es7 @decorator
-```
+```js
 import wrapReactLifecycleMethodsWithTryCatch from 'react-component-errors'
 
 @wrapReactLifecycleMethodsWithTryCatch
@@ -33,7 +33,7 @@ class MyComponent extends React.Component {
 
 
 # Usage without a decorator
-```
+```js
 import wrapReactLifecycleMethodsWithTryCatch from 'react-component-errors'
 
 class MyComponent extends React.Component {
@@ -49,7 +49,7 @@ wrapReactLifecycleMethodsWithTryCatch(MyComponent);
 
 # Config
 
-```
+```js
 import {config} from 'react-component-errors'
 ```
 
@@ -60,7 +60,7 @@ import {config} from 'react-component-errors'
 
 You can see the below running [in a plnkr](http://plnkr.co/edit/VlYsps?p=preview) where we give the helper our own `errorHandler` which uses [Toastr](http://codeseven.github.io/toastr/) to display error messages.
 
-```
+```js
 'use strict';
 
 import React from 'react';
