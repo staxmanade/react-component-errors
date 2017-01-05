@@ -9,7 +9,7 @@ NOTE: It's not likely a good idea to run with this `enabled` in production as it
 
 ## Will this work when Browsers implement Classes?
 
-To be honest, I'm not sure (would love to find out soon). This does work with a [Babel](https://babeljs.io/) transpiled ES6 class.
+To be honest, I'm not sure (would love to find out soon). This does work with a [Babel](https://babeljs.io/) and [Typescript](http://typescriptlang.org) transpiled ES6 class.
 
 ### More details
 
